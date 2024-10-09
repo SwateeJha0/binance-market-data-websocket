@@ -1,0 +1,28 @@
+Explanation:
+
+HTML (index.html):
+
+Dropdown menus (<select>) allow users to choose between cryptocurrencies (ETH/USDT, BNB/USDT, DOT/USDT) and time intervals (1 minute, 3 minutes, 5 minutes).
+A <canvas> element is used to display the chart.
+CSS (styles.css):
+
+Basic styles are applied to center the content and make the page look clean.
+JavaScript (app.js):
+
+Global variables: These store references to the WebSocket connection (socket), the chart (chart), and previously stored data for each coin (storedData).
+
+initializeChart: This function sets up the candlestick chart using Chart.js. It configures the axes and prepares the chart to receive data.
+
+connectWebSocket: This function creates a WebSocket connection to Binance's WebSocket API based on the selected coin and interval. It handles incoming messages and updates the chart with new candlestick data.
+
+addDataToChart: This function appends new candlestick data to the chart and stores it in local storage for persistence.
+
+switchCoin: When a user switches coins, this function closes the existing WebSocket, loads stored chart data (if available), and opens a new WebSocket connection for the new coin.
+
+switchInterval: When a user changes the time interval, this function behaves similarly to switchCoin, but it keeps the current coin and changes only the time interval.
+
+4. How It Works:
+When the page loads, the chart is initialized, and a WebSocket connection is opened for the default coin (ETH/USDT) and interval (1 minute).
+Users can select a different coin or interval using the dropdowns. When they do, the chart updates accordingly, and the previous data is preserved using local storage.
+The chart continuously updates as new data is received through the WebSocket.
+By following this implementation, you’ll have a complete solution for real-time candlestick chart visualization with Binance’s WebSocket, data persistence, and smooth toggling between multiple coins and timeframes.
